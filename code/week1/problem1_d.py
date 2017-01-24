@@ -31,10 +31,8 @@ def eulers_method(h):
         x3[n+1] = x3[n] + h*(t[n]*t[n]*x1[n]*x3[n] - x1[n]*y2[n])
         y1[n+1] = y1[n] + h*y2[n]
         y2[n+1] = y2[n] + h*(t[n]*y1[n]*y2[n] + 4*x2[n])
-       
     return x1, y1, t
     
-
 
 def main():
     """
@@ -54,9 +52,30 @@ def main():
     plt.legend(['h={}'.format(H[0]),'h={}'.format(H[1]),'h={}'.format(H[2])] ,loc='best')    
     plt.show()
     
+# a class version
+class EulersMethod(object):
+    """
+    class version: in progress
+    """
     
-    
-    
+    def __init__(self,y0,y,f,h,T,t,dim):
+        self.y0 = np.array(self.dim)
+        self.y = np.array(self.dim)
+        self.f = f
+        self.h = h
+        self.T = T
+        self.t = t
+        
+    def solver(self):
+        """
+        general solver for Euler's method.
+        """ 
+        N = int(self.T/self.h)
+        for n in range(0,n):
+            self.y[n+1] = self.y[n] + self.h*self.f(y[n],t[n])
+        return y
+
+
     
 if __name__ == "__main__":
     #h = float(sys.argv[1])
