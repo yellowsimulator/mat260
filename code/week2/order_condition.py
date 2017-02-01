@@ -9,10 +9,8 @@ def first_condition(p,am,bm):
     check first conditon
     """
     if (float(sum(am))==0):
-        #print "ok"
         return True
     else:
-        #print "no"
         return False
 
 def second_condition(p,am,bm):
@@ -25,9 +23,9 @@ def second_condition(p,am,bm):
         Bm = [bm[i]*(i**(k-1)) for i in range(len(bm)) ]
         condition1 = float(sum(Am)-k*sum(Bm))
         values.append(condition1)
-    print values
+    
     generator = [x == 0. for x in values]
-    print any(generator)
+    return any(generator)
     
     
 def third_condition(p,am,bm):
@@ -54,7 +52,6 @@ def return_order(am,bm):
         C1 = first_condition(p,am,bm)
         C2 = second_condition(p,am,bm)
         C3 = third_condition(p,am,bm)
-        print C3
         if C1 and C2 and C3:
             return p
             
@@ -72,4 +69,4 @@ def return_order(am,bm):
 am = [-1,0,0,1]
 bm = [3/8., 9/8.,9/8.,3/8.]
 
-print return_order(am,bm)
+print "order of convergence: ", return_order(am,bm)
