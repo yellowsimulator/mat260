@@ -16,7 +16,7 @@ def EulersMethod(y,f,M,N,h,t):
             y[m][n+1] = y[m][n] + h*f(t[n],y)[m][n]
     return y
             
-            
+        
 def call_solver(h, M, T):
     """
     define your sytem here
