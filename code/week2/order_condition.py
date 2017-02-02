@@ -1,5 +1,6 @@
 """
 implement the order condition
+and return the order of the method
 """
 from math import factorial
 
@@ -56,15 +57,6 @@ def return_order(am,bm):
             return p
             
     
-    
-            
-        
-    
-    
-            
-        
-        
-        
     
 am = [-1,0,0,1]
 bm = [3/8., 9/8.,9/8.,3/8.]
