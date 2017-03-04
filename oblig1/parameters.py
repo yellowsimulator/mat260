@@ -68,7 +68,8 @@ def MalariaModel():
     y = np.array([e_h,i_h,r_h,N_h,e_v,i_v,N_v])
     def f(t,y):
         f1 = ((sigma_v*sigma_h*N_v*beta_hv*i_v)/(sigma_v*N_v+sigma_h*N_h))*\
-             (1-e_h-i_h-r_h)-(nu_h+phi_h+(l_h/N_h) )*e_h + delta_h*i_h*e_h
+             (1-e_h-i_h-r_h)-( nu_h+phi_h+(l_h/N_h) )*e_h + delta_h*i_h*e_h
+             
         f2 = nu_h*e_h-(gamma_h+delta_h+phi_h+(l_h/N_h))*i_h+delta_h*i_h*i_h
         f3 = gamma_h*i_h-(rho_h+phi_h+(l_h/N_h))*r_h+delta_h*i_h*r_h
         f4 = l_h+phi_h*N_h-(mu_1h+mu_2h*N_h)*N_h-delta_h*i_h*N_h
