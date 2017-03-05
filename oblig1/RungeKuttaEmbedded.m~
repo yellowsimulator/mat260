@@ -16,23 +16,25 @@ b_lower=[1/2,0,-3/2,2,0];
 t0 = h;
 n=1;
 while t0<T
+    
     x_higher = RungeKutta( b_higher, x_higher, f, h);
     x_lower = RungeKutta( b_lower,x_lower, f, h);
     K = norm(x_higher-x_lower);
-%     fprintf('K = %d\n',K)
+    fprintf('K = %d\n',K)
 %     
-%     while K>(tol*h)/(T-t1)
+%     while K>(tol*h)/(T-t(1))
 %         h = c*(tol/((T-t1)*K))^(1/(p+1))*h;
 %         x_higher = RungeKutta( b_higher, x_higher, f, h);
 %         x_lower = RungeKutta( b_lower, x_lower, f, h);
+%     
 %         K = norm(x_higher-x_lower);
-%         fprintf('K in side = %d\n',K);
 %     end 
-%     h = h*( tol/(T-t1)*K )^(1/(p+1));
-    
-    t0 = t0 + h;
+    if h ~= 0.
+    h1 = h*( tol/(T-t1)*K   )^(1/(p+1));
+    end
+    t0 = t0 + h + h1;
     %disp(t0);
-    %fprintf('h1 = %d\n',h);
+    fprintf('h1 = %d\n',h);
     
     y = [y , x_lower];
     
