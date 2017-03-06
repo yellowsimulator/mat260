@@ -4,8 +4,6 @@ function [ x ] = RungeKutta( b, y, f, h)
 m=length(y);
 x=zeros(m,1);
 
-
-
 k1 = f(y);
 k2 = f(y+h*((1/3)*k1));
 k3 = f(y+h*((1/6)*k1 + (1/6)*k2));
