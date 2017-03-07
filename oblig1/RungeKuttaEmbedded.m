@@ -9,23 +9,19 @@ x_lower = y0;
 x_higher = y0;
 y=y0;
 
-max_tol = 0.5
-
 b_higher=[1/6,0,0,2/3,1/6];
 b_lower=[1/2,0,-3/2,2,0];
 t0 = 0;
 tt = [t0];
-n=1;
 while t0<T
     x_higher = RungeKutta( b_higher, x_higher, f, h);
     x_lower = RungeKutta( b_lower,x_lower, f, h);
-    d = norm(x_higher-x_lower) %global error
-    K = c*h^(p+1)
-    error_bound = (d*h)/(T-t0)
-    %fprintf('global error = %d\n',d)
+    d = norm(x_higher-x_lower); %global error
+    K = c*h^(p+1);
+    error_bound = (d*h)/(T-t0);
+    fprintf('global error = %d\n',d)
    
     if K > error_bound
-        
     while K>(tol*h)/(T-t0)
         K_new = (d*h)/((T-t0)*K);
         h = c*(tol/((T-t0)*K_new))^(1/(p+1))*h;
@@ -42,7 +38,6 @@ while t0<T
     t0 = t0 + h;
     tt = [tt,t0];
     y = [y , x_lower];
-
     end %end if
    
     t0 = t0 + h;
@@ -50,5 +45,6 @@ while t0<T
     y = [y , x_lower];
     
   
-end
+end % en
+end %while
 
